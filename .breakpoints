@@ -3,9 +3,17 @@
     "components/First.tsx": [
       {
         "id": "0f9cbfe9-a66d-4b51-a5db-c408fdf9eca9",
-        "line": 23,
-        "version": 1583,
-        "index": 719
+        "line": 21,
+        "version": 1647,
+        "index": 681
+      }
+    ],
+    "components/Third.tsx": [
+      {
+        "id": "f14190a5-45d6-4621-9721-aa454816020b",
+        "line": 1,
+        "version": 504,
+        "index": 0
       }
     ]
   }

@@ -6,7 +6,7 @@ import Image from 'next/image';
 const First = () => {
 
   return (
-    <div className="flex flex-col md:flex-row gap-20 h-90 p-4 mt-10">
+    <div className="flex flex-col md:flex-row gap-20 h-90 p-4 mt-10 h-screen">
       {/* First half of the page */}
       <div className="flex flex-col justify-center bg-white md:w-2/5 p-5 gap-5">
         <h6 className="text-gray-500">FREE 30 DAYS TRIAL</h6>
@@ -18,16 +18,16 @@ const First = () => {
           projects from all environments.
         </p>
         <div className="w-50">
-        <Button
-          color="blue-500"
-          text="Start For Free"
-          borderColor="blue-500"
-          textc="white"
-          className="w-20 hover:bg-blue-500 hover:text-white transition duration-300 ease-in-out"
-        />
+          <Button
+            color="white"
+            text="Start For Free"
+            borderColor="blue-500"
+            textc="blue-500"
+
+          />
         </div>
         <Image src="/Iconlayout.svg" alt="technologies" width={100} height={100} />
-          
+
       </div>
 
       {/* Second half of the page */}

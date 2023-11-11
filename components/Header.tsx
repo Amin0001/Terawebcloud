@@ -7,8 +7,9 @@ const Header = () => {
     <header>
       <Navbar />
       <div className="flex space-x-4">
-        <Button text="Sign In" borderColor="white" />
-        <Button text="Sign Up" borderColor="blue-500" />
+        <Button text="Sign In" borderColor="white" color="white" textc="white" />
+        <Button text="Sign In" borderColor="white" color="white" textc="white" />
+
       </div>
     </header>
   );
