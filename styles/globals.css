@@ -1,3 +1,156 @@
+/* styles/globals.css */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* styles/globals.css */
+.carousel-indicators {
+  bottom: 10px;
+  background-color: #0a132e;
+  width: 25vw;
+  margin-left: 37vw;
+  bottom: -65px;
+}
+
+.carousel-indicators li {
+  background-color: #b9b948; /* Gray color for inactive indicators */
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+}
+
+.carousel-indicators .active {
+  background-color: gray; /* Blue color for active indicator */
+}
+body {
+  overflow-x: hidden;
+}
+@media (max-width: 767px) {
+  /* Styles that apply to screens equal to or wider than 640px (md) */
+  .work {
+    width: 80vw;
+    height: 20vh;
+  }
+  .twyse {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .infra {
+    width: 80vw;
+    height: 55vh;
+  }
+  .structure {
+    width: 80vw;
+    height: 25vh;
+  }
+  .bind {
+    padding-left: 12vw;
+    width: 100vw;
+  }
+  .pics {
+    display: none;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+  }
+  .arrange {
+    width: 100vw;
+  }
+  .surf {
+    height: 80vh;
+    gap: 5vh;
+  }
+  .footer {
+    padding: 10vw;
+    margin: 0;
+    gap: 4vw;
+  }
+  .terra {
+    font-size: large;
+  }
+  .sign {
+    margin-top: 0;
+  }
+  .struct {
+    visibility: hidden;
+  }
+  .from {
+    width: 80vw;
+    min-width: 80vw;
+    margin-left: 10vw;
+  }
+  .content {
+    gap: 1vw;
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Styles that apply to screens equal to or wider than 768px (lg) */
+  .work {
+    width: 80vw;
+    height: 20vh;
+  }
+  .twyse {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .structure {
+    width: 80vw;
+    height: 25vh;
+  }
+  .infra {
+    width: 80vw;
+    height: 55vh;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+  }
+  .ratings {
+    width: 50vw;
+    height: auto;
+  }
+  .terra {
+    font-size: larger;
+  }
+  .struct {
+    border-bottom-left-radius: 100px;
+  }
+  .intent {
+    row-gap: 5vw;
+  }
+  .content {
+    gap: 1vw;
+    display: none;
+  }
+}
+@media (min-width: 1024px) {
+  /* Styles that apply to screens equal to or wider than 1024px (xl) */
+  .features {
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+  .ratings {
+    width: 50vw;
+    height: auto;
+  }
+  .terra {
+    font-size: x-large;
+  }
+  .back {
+    width: 50vw;
+    height: 100vh;
+  }
+  .structure {
+    display: block;
+  }
+}

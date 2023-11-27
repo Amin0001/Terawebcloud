@@ -1,71 +1,138 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
-import Button from './Button'
-const Navbar = () => {
-  const [showDocs, setShowDocs] = useState(false);
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import MenuIcon from "@mui/icons-material/Menu";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import Link from "next/link";
 
-  const toggleDocs = () => {
-    setShowDocs(!showDocs);
+interface Props {
+  window?: () => Window;
+}
+
+const drawerWidth = 240;
+const navItems = [
+  { title: "Home", link: "Home" },
+  { title: "ABOUT", link: "About" },
+  { title: "CONTACT", link: "Contact" },
+  { title: "SIGN UP", link: "Auth" },
+  { title: "SIGN IN", link: "Auth" },
+];
+
+export default function NavBar(props: Props) {
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen((prevState) => !prevState);
   };
 
-  return (
-    <header className="bg-white text-gray-700 p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="logo text-2xl font-bold text-black">TerraWeb</div>
-        <ul className="flex space-x-8 flex-grow justify-center">
-          <li>
-            <Link href="/">
-              <a className="hover:text-blue-500 hover:border-b-2 border-blue-500 transition duration-300 ease-in-out">Home</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/how-it-is-done">
-              <a className="hover:border-b-2 hover:text-blue-500 border-blue-500 transition duration-300 ease-in-out">How It's Done</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/pricing">
-              <a className="hover:border-b-2 hover:text-blue-500 border-blue-500 transition duration-300 ease-in-out">Pricing</a>
-            </Link>
-          </li>
-          <li className="relative group">
-            <a
-              className="hover:border-b-2 hover:text-blue-500 border-blue-500 transition duration-300 ease-in-out cursor-pointer"
-              onClick={toggleDocs}
-            >
-              Docs
-            </a>
-            <ul
-              className={`absolute ${showDocs ? 'block' : 'hidden'
-                } bg-gray-900 text-white border border-gray-600 space-y-2 mt-2 py-2`}
-            >
-              <li>
-                <Link href="/docs/getting-started">
-                  <a className="hover:text-blue-500">Getting Started</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/docs/api-reference">
-                  <a className="hover:text-blue-500">API Reference</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/docs/faq">
-                  <a className="hover:text-blue-500">FAQ</a>
-                </Link>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <div className="flex space-x-4">
-
-          <Button color='white' text="Sign In" borderColor="blue-500" textc="blue-500" className="bg-blue-500  hover:bg-blue-500 hover:text-white text-blue-500 transition duration-300 ease-in-out" />
-          <Button color='blue-500' text="Sign Up" borderColor="blue-500" textc="white" className="hover:bg-white hover:text-blue transition duration-300 ease-in-out" />
-        </div>
-
-      </div>
-    </header>
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+      <Typography variant="h6" sx={{ my: 2 }}>
+        TerraWeb
+      </Typography>
+      <Divider />
+      <List>
+        {navItems.map((item) => (
+          <ListItem key={item.title} disablePadding>
+            <ListItemButton href={item.link} sx={{ textAlign: "center" }}>
+              <ListItemText primary={item.title} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
   );
-};
 
-export default Navbar;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
+
+  return (
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline />
+      <AppBar component="nav" className="bg-blue-900">
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ justifyContent: "start", mr: 2, display: { sm: "none" } }}
+          ></IconButton>
+          <h1>TerraWeb</h1>
+
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="end"
+            onClick={handleDrawerToggle}
+            sx={{ justifyContent: "start", mr: 2, display: { sm: "none" } }}
+          >
+            <MenuIcon />
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{
+                flexGrow: 1,
+                display: {
+                  xs: "none",
+                  sm: "block",
+                },
+              }}
+            >
+              TerraWeb
+            </Typography>
+          </IconButton>
+
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", sm: "block", md: "hidden", lg: "hidden" },
+            }}
+          >
+            TerraWeb
+          </Typography>
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            {navItems.map((item) => (
+              <Button href={item.link} key={item.title} sx={{ color: "#fff" }}>
+                {item.title}
+              </Button>
+            ))}
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <nav>
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
+      </nav>
+    </Box>
+  );
+}

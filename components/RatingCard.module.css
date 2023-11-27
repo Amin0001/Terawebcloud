@@ -1,0 +1,13 @@
+/* components/RatingCard.module.css */
+.star-rating {
+  display: inline-block;
+  background: yellow;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.star-rating::before {
+  content: "\2605"; /* Unicode character for a star */
+  font-size: 1.2em;
+  color: white;
+}

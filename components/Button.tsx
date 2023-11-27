@@ -1,13 +1,32 @@
-import React from 'react';
+// MyButton.js
+import React from "react";
+import styles from "./Button.module.css"; // Import your local styles
 
-const Button = ({ text, borderColor, color, textc }) => {
+interface MyButtonProps {
+  color: string;
+  width: number;
+  text: string;
+  borderColor: string;
+  textc: string;
+  className?: string;
+}
+
+const MyButton: React.FC<MyButtonProps> = ({
+  color,
+  width,
+  text,
+  borderColor,
+  textc,
+  className = "",
+}) => {
   return (
     <button
-      className={`bg-${color} border-${borderColor} border-2 rounded-md px-4 py-2 text-${textc} hover:bg-${borderColor} hover:text-white hover:border-transparent transition duration-300 ease-in-out`}
+      className={`${styles.myButton} ${className}`}
+      style={{ backgroundColor: color, width, borderColor, color: textc }}
     >
       {text}
     </button>
   );
 };
 
-export default Button;
+export default MyButton;

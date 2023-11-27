@@ -1,0 +1,11 @@
+/* components/MyCarousel.module.css */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: #007bff; /* Blue color for previous and next buttons */
+}

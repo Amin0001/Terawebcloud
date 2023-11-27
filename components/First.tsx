@@ -1,12 +1,11 @@
-
-import React from 'react';
-import Button from './Button';
-import Image from 'next/image';
+import React from "react";
+import Button from "./Button";
+import Image from "next/image";
+import java from "../public/images/java.svg";
 
 const First = () => {
-
   return (
-    <div className="flex flex-col md:flex-row gap-20 h-90 p-4 mt-10 h-screen">
+    <div className="flex flex-col md:flex-row gap-10 p-4 mt-10 ">
       {/* First half of the page */}
       <div className="flex flex-col justify-center bg-white md:w-2/5 p-5 gap-5">
         <h6 className="text-gray-500">FREE 30 DAYS TRIAL</h6>
@@ -23,16 +22,20 @@ const First = () => {
             text="Start For Free"
             borderColor="blue-500"
             textc="blue-500"
-
           />
         </div>
-        <Image src="/Iconlayout.svg" alt="technologies" width={100} height={100} />
-
+        <Image
+          src="/Iconlayout.svg"
+          alt="technologies"
+          width={100}
+          height={100}
+        />
       </div>
 
       {/* Second half of the page */}
-      <div className="md:w-2/5 pt-8 pl-8">
-        <Image src="/damn.png" alt="infrastructure" width={900} height={600} />
+      <div className="hidden md:w-2/5 md:block  mt-16 ml-32">
+        {/* Show image on medium and larger screens */}
+        <Image src={java} alt="infrastructure" width={1200} height={900} />
       </div>
     </div>
   );
