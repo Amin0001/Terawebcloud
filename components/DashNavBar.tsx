@@ -13,6 +13,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
+import { SessionProvider } from "next-auth/react";
+import AccountMenu from "./AccountMenu";
 
 import {
   LayoutDashboard,
@@ -21,9 +23,24 @@ import {
   Banknote,
   File,
   Settings,
+  Bell,
+  HelpCircle,
 } from "lucide-react";
+const routes = [];
 
 const navItems = [
+  {
+    icon: Bell,
+    link: "/notification",
+    title: "Notification",
+    color: "text-violet-500",
+  },
+  {
+    icon: HelpCircle,
+    link: "/help",
+    title: "Support",
+    color: "text-sky-500",
+  },
   {
     title: "Dashboard",
     icon: LayoutDashboard,

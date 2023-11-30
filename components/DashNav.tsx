@@ -34,7 +34,7 @@ const DashNav = () => {
   return (
     <div>
       <div className="flex flex-row mt-2 gap-[5vw] md:gap-[5vw] lg:gap-[20vw] intent">
-        <div className="block sm:hidden">
+        <div className="block sm:hidden md:hidden">
           <DashNavBar />
         </div>
         <div>

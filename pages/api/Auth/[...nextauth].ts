@@ -3,10 +3,10 @@ import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { compare } from "bcrypt";
-import prismadb from "../../../lib/prismadb";
+import { compare, hash } from "bcrypt";
+import prisma from "../../../lib/prismadb";
 
-export const authOptions: AuthOptions = {
+const authOptions: AuthOptions = {
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID || "",
@@ -31,10 +31,10 @@ export const authOptions: AuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          throw new Error("Email and password required");
+          throw new Error("Email and password are required");
         }
 
-        const user = await prismadb.user.findUnique({
+        const user = await prisma.user.findUnique({
           where: {
             email: credentials.email,
           },
@@ -58,14 +58,20 @@ export const authOptions: AuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/Auth",
+    signIn: "/auth",
+  },
+  callbacks: {
+    async signIn(user, account, profile) {
+      // Customize the signIn callback if needed
+      return true;
+    },
+    async redirect(url, baseUrl) {
+      // Customize the redirect callback if needed
+      return url.startsWith(baseUrl) ? url : baseUrl;
+    },
   },
   debug: process.env.NODE_ENV === "development",
-  adapter: PrismaAdapter(prismadb),
-  session: { strategy: "jwt" },
-  jwt: {
-    secret: process.env.NEXTAUTH_JWT_SECRET,
-  },
+  adapter: PrismaAdapter(prisma),
   secret: process.env.NEXTAUTH_SECRET,
 };
 
